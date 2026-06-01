@@ -101,7 +101,7 @@ const pageCopy: Record<Language, PageCopy> = {
     learnMore: "Education",
     profile: {
       label: "Profile",
-      title: "Empirical economics with a builder's bias.",
+      title: "Profile",
       intro:
         "My work sits between economic research, data infrastructure, and applied AI systems.",
       body:
@@ -115,7 +115,7 @@ const pageCopy: Record<Language, PageCopy> = {
     },
     education: {
       label: "Education",
-      title: "Two masters, one research-heavy foundation.",
+      title: "Education",
       intro:
         "Formal training across economics, financial economics, econometrics, and quantitative research.",
       entries: [
@@ -152,7 +152,7 @@ const pageCopy: Record<Language, PageCopy> = {
     },
     experience: {
       label: "Experience",
-      title: "Research, portfolio analytics, and practical AI systems.",
+      title: "Experience",
       intro:
         "Roles across development banking, economic research, public finance, and accounting.",
       entries: [
@@ -192,7 +192,7 @@ const pageCopy: Record<Language, PageCopy> = {
     },
     projects: {
       label: "Research projects",
-      title: "Selected work where models meet data.",
+      title: "Research Projects",
       intro:
         "Academic projects centered on prediction, mechanism design, regulation, and public investment.",
       entries: [
@@ -232,7 +232,7 @@ const pageCopy: Record<Language, PageCopy> = {
     },
     skills: {
       label: "Skills",
-      title: "A research stack for messy data and clear decisions.",
+      title: "Skills",
       intro:
         "Programming, analytics, and communication tools used across research and professional work.",
       groups: [
@@ -279,7 +279,7 @@ const pageCopy: Record<Language, PageCopy> = {
     learnMore: "Ausbildung",
     profile: {
       label: "Profil",
-      title: "Empirische Ökonomie mit Freude am Bauen.",
+      title: "Profil",
       intro:
         "Meine Arbeit liegt zwischen wirtschaftswissenschaftlicher Forschung, Dateninfrastruktur und angewandten KI-Systemen.",
       body:
@@ -293,7 +293,7 @@ const pageCopy: Record<Language, PageCopy> = {
     },
     education: {
       label: "Ausbildung",
-      title: "Zwei Masterstudiengänge und eine forschungsstarke Grundlage.",
+      title: "Ausbildung",
       intro:
         "Ausbildung in Economics, Financial Economics, Ökonometrie und quantitativer Forschung.",
       entries: [
@@ -330,7 +330,7 @@ const pageCopy: Record<Language, PageCopy> = {
     },
     experience: {
       label: "Berufserfahrung",
-      title: "Research, Portfolioanalysen und praktische KI-Systeme.",
+      title: "Berufserfahrung",
       intro:
         "Stationen in Entwicklungsbank, Wirtschaftsforschung, öffentlichen Finanzen und Buchhaltung.",
       entries: [
@@ -370,7 +370,7 @@ const pageCopy: Record<Language, PageCopy> = {
     },
     projects: {
       label: "Forschungsprojekte",
-      title: "Ausgewählte Arbeiten, in denen Modelle auf Daten treffen.",
+      title: "Forschungsprojekte",
       intro:
         "Akademische Projekte zu Prognosemodellen, Mechanism Design, Regulierung und öffentlichen Investitionen.",
       entries: [
@@ -410,7 +410,7 @@ const pageCopy: Record<Language, PageCopy> = {
     },
     skills: {
       label: "Kenntnisse",
-      title: "Ein Research-Stack für komplexe Daten und klare Entscheidungen.",
+      title: "Kenntnisse",
       intro:
         "Programmier-, Analyse- und Kommunikationstools aus Forschung und beruflicher Praxis.",
       groups: [

@@ -702,7 +702,7 @@ h1 span {
 
 .section-header h2 {
   max-width: 780px;
-  font-size: clamp(2rem, 3.2vw, 3.55rem);
+  font-size: clamp(2.35rem, 3.6vw, 4.25rem);
   font-weight: 410;
   letter-spacing: -0.062em;
   line-height: 0.98;
@@ -712,8 +712,8 @@ h1 span {
   max-width: 660px;
   margin: 18px 0 0;
   color: var(--muted);
-  font-size: 0.98rem;
-  line-height: 1.72;
+  font-size: 1.08rem;
+  line-height: 1.68;
 }
 
 .profile-layout {
@@ -727,7 +727,7 @@ h1 span {
   max-width: 735px;
   margin: 0;
   color: var(--muted);
-  font-size: 1rem;
+  font-size: 1.08rem;
   line-height: 1.82;
 }
 
@@ -758,7 +758,7 @@ h1 span {
 .highlight-item strong {
   display: block;
   color: var(--ink);
-  font-size: 1.35rem;
+  font-size: 1.52rem;
   font-weight: 560;
   letter-spacing: -0.03em;
 }
@@ -767,7 +767,7 @@ h1 span {
   display: block;
   margin-top: 11px;
   color: var(--muted);
-  font-size: 0.78rem;
+  font-size: 0.9rem;
   line-height: 1.5;
 }
 
@@ -801,7 +801,7 @@ h1 span {
 .project-item h3,
 .skill-group h3 {
   margin-top: 13px;
-  font-size: 1rem;
+  font-size: 1.13rem;
   font-weight: 730;
   line-height: 1.32;
 }
@@ -810,7 +810,7 @@ h1 span {
 .project-item > p:not(.timeline-date):not(.timeline-subtitle) {
   margin: 14px 0 0;
   color: var(--muted);
-  font-size: 0.84rem;
+  font-size: 0.96rem;
   line-height: 1.62;
 }
 
@@ -837,7 +837,7 @@ h1 span {
 .timeline-item {
   position: relative;
   display: grid;
-  grid-template-columns: 158px minmax(0, 1fr);
+  grid-template-columns: 172px minmax(0, 1fr);
   gap: clamp(1.5rem, 4vw, 3.25rem);
   padding-left: 25px;
 }
@@ -856,13 +856,13 @@ h1 span {
 .timeline-date {
   margin: 0;
   color: var(--muted);
-  font-size: 0.78rem;
+  font-size: 0.9rem;
   font-weight: 680;
   line-height: 1.45;
 }
 
 .timeline h3 {
-  font-size: 1rem;
+  font-size: 1.14rem;
   font-weight: 750;
   line-height: 1.32;
 }
@@ -870,7 +870,7 @@ h1 span {
 .timeline-subtitle {
   margin: 8px 0 0;
   color: var(--muted);
-  font-size: 0.82rem;
+  font-size: 0.95rem;
   font-weight: 650;
   line-height: 1.45;
 }
@@ -879,7 +879,7 @@ h1 span {
   max-width: 780px;
   margin: 13px 0 0;
   color: var(--muted);
-  font-size: 0.84rem;
+  font-size: 0.96rem;
   line-height: 1.62;
 }
 
@@ -904,7 +904,7 @@ h1 span {
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.24);
   color: #18304f;
-  font-size: 0.72rem;
+  font-size: 0.8rem;
   font-weight: 720;
 }
 
@@ -918,12 +918,13 @@ h1 span {
 
 .skill-group h3 {
   margin: 0 0 18px;
+  font-size: 1.13rem;
 }
 
 .language-line {
   margin: 24px 0 0;
   color: var(--muted);
-  font-size: 0.94rem;
+  font-size: 1.04rem;
   font-weight: 650;
 }
 
