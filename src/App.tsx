@@ -1,46 +1,156 @@
-import type { ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 
 type IconName = "home" | "user" | "briefcase" | "document" | "mail" | "download" | "sun";
+type Language = "en" | "de";
+
+type NavItem = {
+  label: string;
+  icon: IconName;
+  active?: boolean;
+  href: string;
+};
 
 type Skill = {
   name: string;
   value: number;
 };
 
-type Education = {
+type TimelineItem = {
   dates: string;
   title: string;
-  school: string;
+  detail: string;
 };
 
-const navItems: Array<{ label: string; icon: IconName; active?: boolean; href: string }> = [
-  { label: "Home", icon: "home", active: true, href: "#top" },
-  { label: "About", icon: "user", href: "#about" },
-  { label: "Work", icon: "briefcase", href: "#work" },
-  { label: "CV", icon: "document", href: "#skills" },
-  { label: "Contact", icon: "mail", href: "#contact" },
-];
+type PageCopy = {
+  languageName: string;
+  nav: NavItem[];
+  availability: string;
+  download: string;
+  intro: string;
+  role: string;
+  summary: string;
+  viewWork: string;
+  learnMore: string;
+  aboutLabel: string;
+  aboutTitle: string;
+  aboutBody: string;
+  aboutLink: string;
+  skillsLabel: string;
+  skills: Skill[];
+  experienceLabel: string;
+  experience: TimelineItem[];
+  experienceLink: string;
+  footerCv: string;
+};
 
-const skills: Skill[] = [
-  { name: "TypeScript", value: 90 },
-  { name: "React", value: 85 },
-  { name: "Next.js", value: 80 },
-  { name: "Node.js", value: 75 },
-  { name: "UI / UX", value: 70 },
-];
+const cvPath = "/cv-julian-reynolds.pdf";
 
-const education: Education[] = [
-  {
-    dates: "2021 — 2023",
-    title: "Advanced Computer Science Studies",
-    school: "Software systems, research, and applied projects",
+const pageCopy: Record<Language, PageCopy> = {
+  en: {
+    languageName: "English",
+    nav: [
+      { label: "Home", icon: "home", active: true, href: "#top" },
+      { label: "About", icon: "user", href: "#about" },
+      { label: "Experience", icon: "briefcase", href: "#experience" },
+      { label: "CV", icon: "document", href: cvPath },
+      { label: "Contact", icon: "mail", href: "#contact" },
+    ],
+    availability: "Available for research, data, and AI projects",
+    download: "Download CV",
+    intro: "Hi, I'm",
+    role: "MSc Economics & Financial Economics",
+    summary:
+      "I combine empirical economics, financial machine learning, and AI-powered tools to turn complex data into decisions teams can use.",
+    viewWork: "View work",
+    learnMore: "Learn more",
+    aboutLabel: "About me",
+    aboutTitle: "Economics, data, and AI tools.",
+    aboutBody:
+      "I am from Bolivia and currently pursue two master’s degrees: Economics at Tilburg University and Financial Economics at Erasmus University Rotterdam.",
+    aboutLink: "More about me",
+    skillsLabel: "Skills",
+    skills: [
+      { name: "Python", value: 92 },
+      { name: "R", value: 86 },
+      { name: "Power BI", value: 84 },
+      { name: "OpenAI API", value: 88 },
+      { name: "SQL / WRDS", value: 72 },
+    ],
+    experienceLabel: "Experience",
+    experience: [
+      {
+        dates: "2025",
+        title: "KfW Development Bank",
+        detail: "NLP review system, portfolio analysis, SQL and Power BI data architecture.",
+      },
+      {
+        dates: "2024 - 2025",
+        title: "ZEW Research",
+        detail: "Public investment datasets, econometric scenarios, seminars, and election briefings.",
+      },
+    ],
+    experienceLink: "View full CV",
+    footerCv: "CV",
   },
-  {
-    dates: "2018 — 2021",
-    title: "Computer Science Foundations",
-    school: "Programming, systems design, and product fundamentals",
+  de: {
+    languageName: "Deutsch",
+    nav: [
+      { label: "Start", icon: "home", active: true, href: "#top" },
+      { label: "Profil", icon: "user", href: "#about" },
+      { label: "Erfahrung", icon: "briefcase", href: "#experience" },
+      { label: "CV", icon: "document", href: cvPath },
+      { label: "Kontakt", icon: "mail", href: "#contact" },
+    ],
+    availability: "Offen für Research-, Daten- und KI-Projekte",
+    download: "CV herunterladen",
+    intro: "Hallo, ich bin",
+    role: "MSc Economics & Financial Economics",
+    summary:
+      "Ich verbinde empirische Ökonomie, Financial Machine Learning und KI-gestützte Tools, um komplexe Daten in nutzbare Entscheidungen zu übersetzen.",
+    viewWork: "Erfahrung",
+    learnMore: "Mehr erfahren",
+    aboutLabel: "Profil",
+    aboutTitle: "Ökonomie, Daten und KI-Werkzeuge.",
+    aboutBody:
+      "Ich komme aus Bolivien und absolviere derzeit zwei Masterabschlüsse: Economics an der Universität Tilburg und Financial Economics an der Erasmus-Universität Rotterdam.",
+    aboutLink: "Mehr über mich",
+    skillsLabel: "Kenntnisse",
+    skills: [
+      { name: "Python", value: 92 },
+      { name: "R", value: 86 },
+      { name: "Power BI", value: 84 },
+      { name: "OpenAI API", value: 88 },
+      { name: "SQL / WRDS", value: 72 },
+    ],
+    experienceLabel: "Erfahrung",
+    experience: [
+      {
+        dates: "2025",
+        title: "KfW Entwicklungsbank",
+        detail: "NLP-Review-System, Portfolioanalysen sowie SQL- und Power-BI-Datenarchitektur.",
+      },
+      {
+        dates: "2024 - 2025",
+        title: "ZEW Forschung",
+        detail: "Investitionsdaten, ökonometrische Szenarien, Seminare und Wahlbriefings.",
+      },
+    ],
+    experienceLink: "Vollständigen CV",
+    footerCv: "CV",
   },
-];
+};
+
+function getInitialLanguage(): Language {
+  const language = new URLSearchParams(window.location.search).get("lang");
+  return language === "de" ? "de" : "en";
+}
+
+function updateLanguageUrl(language: Language) {
+  const params = new URLSearchParams(window.location.search);
+  params.set("lang", language);
+  const nextUrl = `${window.location.pathname}?${params.toString()}${window.location.hash}`;
+  window.history.replaceState(null, "", nextUrl);
+}
 
 function Icon({ name }: { name: IconName }) {
   const commonProps = {
@@ -118,6 +228,14 @@ function DottedMatrix() {
 }
 
 export default function App() {
+  const [language, setLanguage] = useState<Language>(getInitialLanguage);
+  const copy = pageCopy[language];
+
+  useEffect(() => {
+    document.documentElement.lang = language;
+    updateLanguageUrl(language);
+  }, [language]);
+
   return (
     <main className="portfolio-shell" id="top">
       <aside className="side-rail" aria-label="Section navigation">
@@ -126,10 +244,11 @@ export default function App() {
         </a>
 
         <nav className="rail-nav">
-          {navItems.map((item) => (
+          {copy.nav.map((item) => (
             <a
               aria-current={item.active ? "page" : undefined}
               className="rail-link"
+              download={item.href === cvPath ? true : undefined}
               href={item.href}
               key={item.label}
             >
@@ -153,34 +272,46 @@ export default function App() {
         <header className="top-bar">
           <p className="availability">
             <span className="blue-dot" aria-hidden="true" />
-            Available for opportunities
+            {copy.availability}
           </p>
-          <a className="download-button" href="#skills" aria-label="Download CV placeholder">
-            Download CV
-            <Icon name="download" />
-          </a>
+
+          <div className="top-actions">
+            <div className="language-switcher" aria-label="Language selector">
+              {(["en", "de"] as Language[]).map((item) => (
+                <button
+                  aria-pressed={language === item}
+                  key={item}
+                  onClick={() => setLanguage(item)}
+                  type="button"
+                >
+                  {item.toUpperCase()}
+                </button>
+              ))}
+            </div>
+            <a className="download-button" download href={cvPath}>
+              {copy.download}
+              <Icon name="download" />
+            </a>
+          </div>
         </header>
 
         <section className="hero-grid" aria-labelledby="hero-title">
           <div className="hero-copy">
-            <p className="intro-line">Hi, I'm</p>
+            <p className="intro-line">{copy.intro}</p>
             <h1 id="hero-title">
               <span>Julian</span>
               {" "}
               <span>Reynolds</span>
             </h1>
-            <p className="role">Software Engineer & Problem Solver</p>
-            <p className="summary">
-              I build elegant, efficient, and scalable digital solutions that make
-              an impact.
-            </p>
+            <p className="role">{copy.role}</p>
+            <p className="summary">{copy.summary}</p>
             <div className="hero-actions">
-              <a className="primary-action" href="#work">
-                View work
+              <a className="primary-action" href="#experience">
+                {copy.viewWork}
                 <span aria-hidden="true">↗</span>
               </a>
               <a className="text-action" href="#about">
-                Learn more
+                {copy.learnMore}
                 <span className="blue-dot" aria-hidden="true" />
               </a>
             </div>
@@ -206,15 +337,12 @@ export default function App() {
             <DottedMatrix />
             <p className="card-label">
               <span className="blue-dot" aria-hidden="true" />
-              About me
+              {copy.aboutLabel}
             </p>
-            <h2>I'm a builder at heart.</h2>
-            <p>
-              With a strong foundation in computer science and a passion for
-              thoughtful design, I enjoy turning ideas into real-world products.
-            </p>
+            <h2>{copy.aboutTitle}</h2>
+            <p>{copy.aboutBody}</p>
             <a className="card-link" href="#contact">
-              More about me
+              {copy.aboutLink}
               <span className="blue-dot" aria-hidden="true" />
             </a>
           </article>
@@ -223,10 +351,10 @@ export default function App() {
             <DottedMatrix />
             <p className="card-label">
               <span className="blue-dot" aria-hidden="true" />
-              Skills
+              {copy.skillsLabel}
             </p>
             <div className="skills-list">
-              {skills.map((skill) => (
+              {copy.skills.map((skill) => (
                 <div className="skill-row" key={skill.name}>
                   <div className="skill-meta">
                     <span>{skill.name}</span>
@@ -240,26 +368,26 @@ export default function App() {
             </div>
           </article>
 
-          <article className="info-card education-card" id="work">
+          <article className="info-card experience-card" id="experience">
             <DottedMatrix />
             <p className="card-label">
               <span className="blue-dot" aria-hidden="true" />
-              Education
+              {copy.experienceLabel}
             </p>
             <div className="timeline">
-              {education.map((item) => (
-                <div className="timeline-item" key={item.dates}>
+              {copy.experience.map((item) => (
+                <div className="timeline-item" key={`${item.dates}-${item.title}`}>
                   <span className="timeline-node" aria-hidden="true" />
                   <p className="timeline-date">{item.dates}</p>
                   <div>
                     <h3>{item.title}</h3>
-                    <p>{item.school}</p>
+                    <p>{item.detail}</p>
                   </div>
                 </div>
               ))}
             </div>
-            <a className="secondary-button" href="#work">
-              View full timeline
+            <a className="secondary-button" download href={cvPath}>
+              {copy.experienceLink}
               <span className="blue-dot" aria-hidden="true" />
             </a>
           </article>
@@ -271,11 +399,15 @@ export default function App() {
             <span className="blue-dot" aria-hidden="true" />
           </p>
           <div className="footer-links">
-            <a href="https://github.com/julianreynolds">GitHub</a>
+            <a href="mailto:Julian.reynolds02@gmail.com">Email</a>
             <span className="blue-dot" aria-hidden="true" />
-            <a href="https://www.linkedin.com/in/julianreynolds/">LinkedIn</a>
+            <a download href={cvPath}>
+              {copy.footerCv}
+            </a>
             <span className="blue-dot" aria-hidden="true" />
-            <a href="mailto:hello@julianreynolds.com">Email</a>
+            <button type="button" onClick={() => setLanguage(language === "en" ? "de" : "en")}>
+              {copy.languageName}
+            </button>
             <span className="blue-dot" aria-hidden="true" />
           </div>
         </footer>

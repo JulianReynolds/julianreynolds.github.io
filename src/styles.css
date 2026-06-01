@@ -277,6 +277,45 @@ button {
   font-weight: 650;
 }
 
+.top-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.language-switcher {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  min-height: 38px;
+  padding: 4px;
+  border: 1px solid rgba(43, 54, 69, 0.12);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.34);
+  box-shadow:
+    0 12px 24px rgba(31, 33, 35, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.62);
+}
+
+.language-switcher button {
+  min-width: 40px;
+  min-height: 30px;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  font-size: 0.74rem;
+  font-weight: 820;
+  letter-spacing: 0.08em;
+}
+
+.language-switcher button[aria-pressed="true"] {
+  background: var(--navy);
+  color: #ffffff;
+  box-shadow: 0 8px 18px rgba(12, 61, 134, 0.18);
+}
+
 .download-button::after {
   top: -3px;
   right: -3px;
@@ -673,7 +712,7 @@ h1 span {
   content: "";
 }
 
-.education-card {
+.experience-card {
   padding-right: 45px;
 }
 
@@ -763,6 +802,15 @@ h1 span {
   gap: 35px;
   color: var(--ink);
   font-weight: 620;
+}
+
+.footer-links button {
+  border: 0;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  font: inherit;
+  padding: 0;
 }
 
 .footer-links .blue-dot {
@@ -871,6 +919,11 @@ h1 span {
     align-items: flex-start;
     flex-direction: column;
     padding: 0 4px;
+  }
+
+  .top-actions {
+    align-items: flex-start;
+    flex-direction: column;
   }
 
   .download-button {
