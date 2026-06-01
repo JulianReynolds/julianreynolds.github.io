@@ -230,12 +230,11 @@ button {
 .top-bar {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end;
   gap: 1.5rem;
   padding: 0 18px 0 58px;
 }
 
-.availability,
 .card-label {
   display: inline-flex;
   align-items: center;
@@ -346,11 +345,13 @@ button {
   right: 6px;
   width: 70px;
   height: 70px;
-  background:
-    linear-gradient(90deg, transparent 0 46%, var(--blue) 49% 51%, transparent 54% 100%),
-    linear-gradient(0deg, transparent 0 46%, var(--blue) 49% 51%, transparent 54% 100%);
-  filter: drop-shadow(0 0 11px rgba(23, 125, 255, 0.5));
-  opacity: 0.78;
+  background: var(--blue);
+  clip-path: polygon(50% 0, 59% 39%, 100% 50%, 59% 61%, 50% 100%, 41% 61%, 0 50%, 41% 39%);
+  filter:
+    drop-shadow(0 0 10px rgba(23, 125, 255, 0.72))
+    drop-shadow(0 0 26px rgba(23, 125, 255, 0.35));
+  opacity: 0.68;
+  transform: rotate(14deg);
   content: "";
 }
 
@@ -556,7 +557,30 @@ h1 span {
 .frame-glow {
   position: absolute;
   z-index: 3;
+  background: none;
   pointer-events: none;
+}
+
+.frame-glow::before {
+  position: absolute;
+  inset: 9%;
+  background:
+    radial-gradient(circle, rgba(255, 255, 255, 0.95) 0 5%, transparent 6%),
+    var(--blue);
+  clip-path: polygon(50% 0, 58% 40%, 100% 50%, 58% 60%, 50% 100%, 42% 60%, 0 50%, 42% 40%);
+  filter:
+    drop-shadow(0 0 9px rgba(23, 125, 255, 0.85))
+    drop-shadow(0 0 26px rgba(23, 125, 255, 0.58));
+  content: "";
+}
+
+.frame-glow::after {
+  position: absolute;
+  inset: 37%;
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow: 0 0 16px rgba(23, 125, 255, 0.9);
+  content: "";
 }
 
 .glow-one {
@@ -564,10 +588,8 @@ h1 span {
   bottom: 41px;
   width: 95px;
   height: 95px;
-  background:
-    linear-gradient(90deg, transparent 0 48%, var(--blue) 49% 51%, transparent 52%),
-    linear-gradient(0deg, transparent 0 48%, var(--blue) 49% 51%, transparent 52%);
-  filter: drop-shadow(0 0 12px var(--blue)) drop-shadow(0 0 28px rgba(23, 125, 255, 0.6));
+  opacity: 0.75;
+  transform: rotate(7deg);
 }
 
 .glow-two {
@@ -575,11 +597,8 @@ h1 span {
   bottom: 108px;
   width: 54px;
   height: 54px;
-  background:
-    linear-gradient(90deg, transparent 0 47%, var(--blue) 49% 51%, transparent 53%),
-    linear-gradient(0deg, transparent 0 47%, var(--blue) 49% 51%, transparent 53%);
-  opacity: 0.76;
-  filter: drop-shadow(0 0 11px rgba(23, 125, 255, 0.75));
+  opacity: 0.7;
+  transform: rotate(-13deg);
 }
 
 .section-stack {
@@ -1175,10 +1194,6 @@ h1 span {
 
   .rail-nav {
     gap: 4px;
-  }
-
-  .availability {
-    font-size: 0.86rem;
   }
 
   .primary-action {

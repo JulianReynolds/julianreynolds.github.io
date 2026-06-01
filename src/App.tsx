@@ -46,7 +46,6 @@ type SectionCopy = {
 type PageCopy = {
   languageName: string;
   nav: NavItem[];
-  availability: string;
   download: string;
   intro: string;
   role: string;
@@ -93,7 +92,6 @@ const pageCopy: Record<Language, PageCopy> = {
       { label: "Research", icon: "spark", href: "#projects" },
       { label: "Contact", icon: "mail", href: "#contact" },
     ],
-    availability: "Available for research, data, and AI projects",
     download: "Download CV",
     intro: "Hi, I'm",
     role: "MSc Economics & Financial Economics",
@@ -272,7 +270,6 @@ const pageCopy: Record<Language, PageCopy> = {
       { label: "Forschung", icon: "spark", href: "#projects" },
       { label: "Kontakt", icon: "mail", href: "#contact" },
     ],
-    availability: "Offen für Research-, Daten- und KI-Projekte",
     download: "CV herunterladen",
     intro: "Hallo, ich bin",
     role: "MSc Economics & Financial Economics",
@@ -639,11 +636,6 @@ export default function App() {
 
       <div className="page-content">
         <header className="top-bar">
-          <p className="availability">
-            <span className="blue-dot" aria-hidden="true" />
-            {copy.availability}
-          </p>
-
           <div className="top-actions">
             <div className="language-switcher" aria-label="Language selector">
               {(["en", "de"] as Language[]).map((item) => (
